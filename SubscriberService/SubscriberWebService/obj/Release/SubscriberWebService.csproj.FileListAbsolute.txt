@@ -1,6 +1,0 @@
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\bin\SubscriberWebService.dll
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\bin\SubscriberWebService.pdb
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\bin\log4net.dll
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\obj\Release\SubscriberWebService.csprojResolveAssemblyReference.cache
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\obj\Release\SubscriberWebService.dll
-C:\work\Release2.4\ntis-dotnet-web-services-Release2.4\SubscriberService\SubscriberWebService\SubscriberWebService\obj\Release\SubscriberWebService.pdb
