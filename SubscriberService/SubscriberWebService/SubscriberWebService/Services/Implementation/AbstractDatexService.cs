@@ -53,6 +53,19 @@ namespace SubscriberWebService.Services
                 log.Error("Exchange is null! Incoming request does not appear to be valid.");
                 return false;
             }
+
+            if (d2LogicalModel.payloadPublication == null)
+            {
+                log.Error("PayloadPublication is null! Incoming request does not appear to be valid");
+                return false;
+            }
+
+            if (d2LogicalModel.payloadPublication.feedType == null)
+            {
+                log.Error("FeedType is null! Incoming request does not appear to be valid");
+                return false;
+            }
+
             log.Debug("Data checked");
             return true;
         }
