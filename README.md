@@ -15,7 +15,7 @@ It has been created in, and tested with, Visual Studio 2012 and the .NET framewo
 Building and testing the website 
 ----------------------------------------------------------------
 
-##### Testing
+### Testing
 
 Visual studio features 
 
@@ -25,29 +25,29 @@ For initial testing, you may wish to use the development server that visual stud
 Visual studio will 
 Visual studio should now launch an instance of the Visual Studio Development Server [1]
 
-Note [1] Visual Studio will fail to launch the Development Server if IIS is installed and running with the same port number configured.
+Note: Visual Studio will fail to launch the Development Server if IIS is installed and running with the same port number configured.
 
-##### Deploying locally using IIS 8.
+### Deploying locally using IIS 8.
 
 To deploy the example implementation on a dedicated IIS install. 
 	Select Publish from the 'BUILD' menu
 	Create a new profile.
 	Select a publish method of 'File System' and navigate to the folder which will contain the service (e.g 'C:\inetpub\wwwroot')
 	Click Publish
-You should now be able to navigate to the location in your browser (e.g 'http://localhost/WebServiceSubscriber.svc') [1] [2]
+You should now be able to navigate to the location in your browser (e.g 'http://localhost/WebServiceSubscriber.svc')
 
-Note [2] You may need to register .NET 4 with IIS, this can be done using the ASP.NET IIS Registration Tool ('Aspnet_regiis.exe')
+Note: You may need to register .NET 4 with IIS, this can be done using the ASP.NET IIS Registration Tool ('Aspnet_regiis.exe')
 	To register .NET 4 with IIS, run "Aspnet_regiis.exe -i" from the Visual Studio Developer Console.
-Note [1] If you receive a server error related to 'targetFramework' check that the correct .NET version is set in your application pool.
+Note: If you receive a server error related to 'targetFramework' check that the correct .NET version is set in your application pool.
 	Application pools can be viewed in the IIS Manager, which can be found in control panel, under administrative tools.
 This example implementation should be compatible with any .NET 4 version (e.g 4.0 or 4.5)
 
 
-##### Example Requests
+### Example Requests
 
 Featured in '\exampleRequests' are some example requests which can be used to test your implementation. All the included requests conform to the 2.4 standard.
 
-##### Testing Using SoapUI
+### Testing Using SoapUI
 
 SoapUI is an open source cross-platform tool which can be used for testing SOAP requests and responses.
 The version used for testing this example was V4.5.2 Because of its simple interface, it was used as a client for testing this Subscriber web service.
