@@ -27,6 +27,9 @@ Visual studio should now launch an instance of the Visual Studio Development Ser
 
 Note: Visual Studio will fail to launch the Development Server if IIS is installed and running with the same port number configured.
 
+Note: If deploying locally, you may need to run visual studio as administrator to publish, or else change security permissions for the webroot.
+
+
 ### Deploying locally using IIS 8.
 
 To deploy the example implementation on a dedicated IIS install. 
@@ -38,6 +41,7 @@ You should now be able to navigate to the location in your browser (e.g 'http://
 
 Note: You may need to register .NET 4 with IIS, this can be done using the ASP.NET IIS Registration Tool ('Aspnet_regiis.exe')
 	To register .NET 4 with IIS, run "Aspnet_regiis.exe -i" from the Visual Studio Developer Console.
+	
 Note: If you receive a server error related to 'targetFramework' check that the correct .NET version is set in your application pool.
 	Application pools can be viewed in the IIS Manager, which can be found in control panel, under administrative tools.
 This example implementation should be compatible with any .NET 4 version (e.g 4.0 or 4.5)
@@ -61,3 +65,10 @@ The version used for testing this example was V4.5.2 Because of its simple inter
 	Modify any of the requests and enter suitable values, or copy any of the example messages provided in the "exampleRequests" folder, which match the message to be tested, and paste over the contents of the "Request 1" sample generated.
 	Click the green play arrow at the top of the request and check that a success response is sent.
 	The message requests and responses will be logged in 'C:\temp\logs\SOAP'.
+	
+	
+### General Notes
+
+Note: The example implementation files contain the wsdl and xsd used to generate the WCF service proxy, if regenerating the proxy from these files
+svcutil will set ReplyAction = "*" which causes the operation not to appear on the wsdl generated dynamically by IIS. This will cause new applications
+referencing the service to not find the push operation, it should not however affect existing applications.
