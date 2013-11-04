@@ -16,7 +16,7 @@ public interface supplierPushInterface
 {
     
     // CODEGEN: Generating message contract since the operation putDatex2Data is neither RPC nor document wrapped.
-    [System.ServiceModel.OperationContractAttribute(Action="http://datex2.eu/wsdl/supplierPush/2_0/putDatex2Data", ReplyAction="*")]
+    [System.ServiceModel.OperationContractAttribute(Action = "http://datex2.eu/wsdl/supplierPush/2_0/putDatex2Data", ReplyAction = "http://datex2.eu/wsdl/supplierPush/2_0/putDatex2Data")]
     [System.ServiceModel.XmlSerializerFormatAttribute()]
     [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DataValue))]
     [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TpegDescriptor))]
