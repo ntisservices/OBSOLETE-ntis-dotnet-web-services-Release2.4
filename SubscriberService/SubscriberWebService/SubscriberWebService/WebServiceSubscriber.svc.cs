@@ -27,31 +27,31 @@ namespace SubscriberWebService
             {
                 D2LogicalModel d2LogicalModel = request.d2LogicalModel;
                 string feedType = d2LogicalModel.payloadPublication.feedType;
-                if (feedType.Contains("ANPR Journey Time Data".ToLower()))
+                if (feedType.Contains("ANPR Journey Time Data"))
                 {
                     return anprTrafficDataService.GetDeliverAnprTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("MIDAS Loop Traffic Data".ToLower()))
+                else if (feedType.Contains("MIDAS Loop Traffic Data"))
                 {
                     return midasTrafficDataService.GetDeliverMidasTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("TMU Loop Traffic Data".ToLower()))
+                else if (feedType.Contains("TMU Loop Traffic Data"))
                 {
                     return tmuTrafficDataService.GetDeliverTMUTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("Fused Sensor-only PTD".ToLower()))
+                else if (feedType.Contains("Fused Sensor-only PTD"))
                 {
                     return SensorTrafficDataService.GetDeliverSensorTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("Fused FVD and Sensor PTD".ToLower()))
+                else if (feedType.Contains("Fused FVD and Sensor PTD"))
                 {
                     return fvdTrafficDataService.GetDeliverFVDTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("VMS and Matrix Signal Status Data".ToLower()))
+                else if (feedType.Contains("VMS and Matrix Signal Status Data"))
                 {
                     return vmsDataService.GetDeliverVMSTrafficDataResponse(d2LogicalModel);
                 }
-                else if (feedType.Contains("NTIS Model Update Notification".ToLower()))
+                else if (feedType.Contains("NTIS Model Update Notification"))
                 {
                     return ntisModelNotificationService.GetNtisModelNotificationDataResponse(d2LogicalModel);
                 }
@@ -63,7 +63,7 @@ namespace SubscriberWebService
             catch (Exception e)
             {
                 log.Info(e.Message);
-                return new putDatex2DataResponse();
+                throw e;
             }
         }
     }
