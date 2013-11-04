@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 
 namespace SubscriberWebService.Services
 {
@@ -10,6 +11,13 @@ namespace SubscriberWebService.Services
         public putDatex2DataResponse GetDeliverFVDTrafficDataResponse(D2LogicalModel deliverFVDTrafficDataRequest)
         {
             log.Info("Handling Fused FVD and Sensor PTD Request");
+
+            // Validate the D2Logical Model
+            if (!ExampleDataCheckOk(deliverFVDTrafficDataRequest))
+            {
+                throw new SoapException("Incoming request does not appear to be valid!", SoapException.ClientFaultCode);
+            }
+
 
             ElaboratedDataPublication elaboratedDataPublication = deliverFVDTrafficDataRequest.payloadPublication as ElaboratedDataPublication;
 
@@ -29,7 +37,7 @@ namespace SubscriberWebService.Services
             
             log.Info("Fused FVD and Sensor PTD Request: Processing Completed Successfuly");
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
 
         }
 

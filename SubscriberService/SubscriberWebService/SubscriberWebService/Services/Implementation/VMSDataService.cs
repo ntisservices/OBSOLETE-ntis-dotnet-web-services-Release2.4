@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 
 namespace SubscriberWebService.Services
 {
@@ -10,6 +11,14 @@ namespace SubscriberWebService.Services
     {
         public putDatex2DataResponse GetDeliverVMSTrafficDataResponse(D2LogicalModel VMSTrafficData)
         {
+            log.Info("Handling VMS Traffic Data");
+            // Validate the D2Logical Model
+            if (!ExampleDataCheckOk(VMSTrafficData))
+            {
+                throw new SoapException("Incoming request does not appear to be valid!", SoapException.ClientFaultCode);
+            }
+
+
             VmsPublication payloadPublication = VMSTrafficData.payloadPublication as VmsPublication;
 
             if (payloadPublication != null)
@@ -20,7 +29,7 @@ namespace SubscriberWebService.Services
                     log.Info(string.Format("Vmsunit GUID: {0}", vmsUnit.vmsUnitReference.id));
 
                     IList<_VmsUnitVmsIndexVms> vmsIndexList = vmsUnit.vms;
-                    if (vmsIndexList.Count > 0)
+                    if (vmsIndexList != null && vmsIndexList.Count > 0)
                     {
                         _VmsUnitVmsIndexVms vmsUnitVmsIndexVms = vmsIndexList[0];
                         IList<_VmsMessageIndexVmsMessage> vmsMessageList = vmsUnitVmsIndexVms.vms.vmsMessage;
@@ -46,7 +55,7 @@ namespace SubscriberWebService.Services
 
             log.Info("VMSTraffic Data Request: Processing Completed Successfuly");
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
 
         }
     }

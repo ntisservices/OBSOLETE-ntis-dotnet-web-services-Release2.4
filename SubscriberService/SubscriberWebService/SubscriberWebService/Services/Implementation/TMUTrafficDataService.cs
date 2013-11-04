@@ -50,7 +50,7 @@ namespace SubscriberWebService.Services
                 }
             }
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
 
         }
     }

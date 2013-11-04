@@ -113,7 +113,7 @@ namespace SubscriberWebService.Services
                 throw new SoapException("Error while obtaining MeasuredDataPublication.", SoapException.ServerFaultCode, e);
             }
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
         }
 
         public int GetLaneNumberFromTrafficDataIndex(int measuredValueIndex)

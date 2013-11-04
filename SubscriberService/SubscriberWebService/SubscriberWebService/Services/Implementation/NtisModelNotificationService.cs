@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 
 namespace SubscriberWebService.Services
 {
@@ -11,6 +12,12 @@ namespace SubscriberWebService.Services
         public putDatex2DataResponse GetNtisModelNotificationDataResponse(D2LogicalModel deliverNtisModelNotificationDataRequest)
         {
             log.Info("Handling Ntis Model Notification Request!");
+
+            // Validate the D2Logical Model
+            if (!ExampleDataCheckOk(deliverNtisModelNotificationDataRequest))
+            {
+                throw new SoapException("Incoming request does not appear to be valid!", SoapException.ClientFaultCode);
+            }
 
             if (deliverNtisModelNotificationDataRequest.payloadPublication != null)
             {
@@ -30,7 +37,7 @@ namespace SubscriberWebService.Services
 
             log.Info("Ntis Model Notification Data Request: Processing Completed Successfuly");
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
         }
     }
 }

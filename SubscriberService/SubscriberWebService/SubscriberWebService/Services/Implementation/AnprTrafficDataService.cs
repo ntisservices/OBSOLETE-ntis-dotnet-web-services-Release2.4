@@ -35,6 +35,13 @@ namespace SubscriberWebService.Services
         {
             log.Info("New DeliverANPRTrafficDataRequest received.");
 
+            // Validate the D2Logical Model
+            if (!ExampleDataCheckOk(deliverANPRTrafficDataRequest))
+            {
+                throw new SoapException("Incoming request does not appear to be valid!", SoapException.ClientFaultCode);
+            }
+
+
             MeasuredDataPublication measuredDataPublication = deliverANPRTrafficDataRequest.payloadPublication as MeasuredDataPublication;
 
             log.Info("Got MeasuredDataPublication from request");
@@ -43,7 +50,7 @@ namespace SubscriberWebService.Services
 
             log.Info("ANPR Request: Processing Completed Successfuly");
 
-            return new putDatex2DataResponse();
+            return new putDatex2DataResponse { d2LogicalModel = new D2LogicalModel() };
 
         }
 
